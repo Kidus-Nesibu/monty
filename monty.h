@@ -2,12 +2,15 @@
 #define MAIN_H
 #define USAGE "USAGE: monty file\n"
 #define EXIT_FAILURE 1
-
+#include<unistd.h>
+#include<ctype.h>
+#include<fcntl.h>
 #include<stdio.h>
 #include<stdlib.h>
 #include<stddef.h>
 #include<string.h>
-
+#include <sys/types.h>
+#include <sys/stat.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

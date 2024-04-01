@@ -1,11 +1,9 @@
 #include"monty.h"
-#include<stdio.h>
-#include<stdlib.h>
 void process_file(char *filename)
 {
 	char *line = NULL;
 	size_t len = 0;
-	signed int read;
+	int read;
 	unsigned int line_number = 1;
 	char *token;
 	
