@@ -1,6 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
-
+#define UNUSED(x) (void)(x)
 #include<unistd.h>
 #include<ctype.h>
 #include<fcntl.h>
@@ -44,4 +44,5 @@ void check(char *str, unsigned int line_number);
 void push(stack_t **top, unsigned int line_number);
 void print(stack_t **top, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+stack_t *add(stack_t *top, int data);
 #endif

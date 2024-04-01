@@ -23,19 +23,15 @@ void process_file(char *filename)
                 fprintf(stderr, "Error: Can't open file %s\n", filename);
                 exit(EXIT_FAILURE);
         }
-	printf("File is opend --------------------\n");
         while ((read = getline(&line, &len, file)) != -1)
         {
                 line_number++;
                 token = strtok(line, " \n\t\r");
-		printf("Read line %d and tokenized string\n", line_number);
                 if (token != NULL)
                 {
-			printf("calling the check function to check if the opcode is in the array\n");
                         check(token, line_number);
                 }
         }
-	printf("freeing the getline buffer line\n");
         if (line)
         {
                 free(line);

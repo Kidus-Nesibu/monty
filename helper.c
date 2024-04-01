@@ -9,14 +9,11 @@ void check(char *str, unsigned int line_number)
 		{"pall", print},
 		{NULL, NULL}
 	};
-	printf("Itreating the array to check if the array cointains the same opcode\n");
-	printf("Before the loop\n");
 	while (arr[i].opcode != NULL)
 	{
-		printf("in the loop ...\n");
+		printf("%s\n", arr[i].opcode);
 		if (strcmp(arr[i].opcode, str) == 0)
 		{
-			printf("calling the function to perform the crossponding operation\n");
 			arr[i].f(&top, line_number);
 			break;
 		}
@@ -28,3 +25,20 @@ void check(char *str, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
+stack_t *add(stack_t *top, int data)
+{
+	stack_t *new_node = NULL;
+
+	new_node = malloc(sizeof(stack_t));
+	new_node->n = data;
+	new_node->prev = NULL;
+	new_node->next = NULL;
+	
+	new_node->next = top;
+	if (top != NULL)
+	{
+		top->prev = new_node;
+	}
+	return new_node;
+}
+	
