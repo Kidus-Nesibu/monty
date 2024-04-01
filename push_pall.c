@@ -1,20 +1,24 @@
 #include"monty.h"
-void push(stack_t **top, int n)
+void push(stack_t **top, unsigned int line_number)
 {
 	int data;
-	stack_t *new = malloc(sizeof(stack_t));
+	stack_t *new;
 
 	data = atoi(strtok(NULL, " \n\t\r"));
 	new->n = data;
+	new->prev = NULL;
+	new->next = NULL;
+
 	new->next = *top;
+	(*top)->prev = new;
 	*top = new;
 }
-void print(stack_t **top, int n)
+void print(stack_t **top, unsigned int line_number)
 {
-	stack_t *tmp;
-	
-	*top = tmp;
-	while(tmp != NULL)
+	stack_t *tmp = NULL;
+
+	tmp = *top;
+	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
