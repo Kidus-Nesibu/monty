@@ -1,7 +1,6 @@
 #ifndef MAIN_H
 #define MAIN_H
-#define USAGE "USAGE: monty file\n"
-#define EXIT_FAILURE 1
+
 #include<unistd.h>
 #include<ctype.h>
 #include<fcntl.h>
@@ -44,4 +43,5 @@ void process_file(char *filename);
 void check(char *str, unsigned int line_number);
 void push(stack_t **top, unsigned int line_number);
 void print(stack_t **top, unsigned int line_number);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 #endif

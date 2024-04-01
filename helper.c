@@ -1,34 +1,4 @@
 #include"monty.h"
-void process_file(char *filename)
-{
-	char *line = NULL;
-	size_t len = 0;
-	int read;
-	unsigned int line_number = 1;
-	char *token;
-	
-	FILE *file = fopen(filename, "r");
-	if (file == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
-		exit(EXIT_FAILURE);
-	}
-	while ((read = getline(&line, &len, file)) != -1)
-	{
-		line_number++;
-		token = strtok(line, " \n\t\r");
-		if (token != NULL)
-		{
-			check(token, line_number);
-		}
-	}
-	
-	if (line)
-	{
-		free(line);
-	}
-	fclose(file);
-}
 void check(char *str, unsigned int line_number)
 {
 	stack_t *top = NULL;
@@ -39,10 +9,14 @@ void check(char *str, unsigned int line_number)
 		{"pall", print},
 		{NULL, NULL}
 	};
+	printf("Itreating the array to check if the array cointains the same opcode\n");
+	printf("Before the loop\n");
 	while (arr[i].opcode != NULL)
 	{
+		printf("in the loop ...\n");
 		if (strcmp(arr[i].opcode, str) == 0)
 		{
+			printf("calling the function to perform the crossponding operation\n");
 			arr[i].f(&top, line_number);
 			break;
 		}
