@@ -9,7 +9,12 @@ void push(stack_t **top, unsigned int line_number)
 	int data;
 
 	data = atoi(strtok(NULL, " \n\t\r"));
-	if (isInteger(data) == false && *top == NULL)
+	if (!isInteger(data))
+	{
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (*top == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
