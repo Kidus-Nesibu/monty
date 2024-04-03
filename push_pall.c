@@ -9,11 +9,19 @@ void push(stack_t **top, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	*top = add_node(*top, data);
+	if (*top == NULL)
+	{
+		exit(EXIT_FAILURE);
+	}
 }
 void pall(stack_t **top, unsigned int line_number)
 {
 	stack_t *tmp = *top;
 	UNUSED(line_number);
+	if (*top == NULL)
+	{
+		return;
+	}
 	while (tmp != NULL)
 	{
 		printf("%d\n", tmp->n);
