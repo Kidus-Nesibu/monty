@@ -30,6 +30,11 @@ bool isInteger(double num)
 stack_t *add_node(stack_t *top, int data)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
+	if (new_node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		return (NULL);
+	}
 	new_node->n = data;
 	new_node->prev = NULL;
 	new_node->next = NULL;
