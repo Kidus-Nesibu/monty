@@ -1,8 +1,14 @@
 #include"monty.h"
+/**
+ * check - checks if the crossponding of the opcode is available
+ * @str: the name of the opcode
+ * @line_number: the number of the line
+ * @top: the name of the stack
+ */
 void check(char *str, unsigned int line_number, stack_t **top)
 {
 	int i = 0;
-	
+
 	instruction_t arr[] = {
 		{"push", push},
 		{"pall", pall},
@@ -23,13 +29,25 @@ void check(char *str, unsigned int line_number, stack_t **top)
 		exit(EXIT_FAILURE);
 	}
 }
+/**
+ * isInteger - check if the digit is an int or not
+ * @num: the number that is used to be checked
+ * Return: True if the value is int False if the value is not int
+ */
 bool isInteger(double num)
 {
 	return (num == (int)num);
 }
+/**
+ * add_node - add a node to the top of the stack
+ * @top: the stack name
+ * @data: the data to be added to the stack
+ * Return: the new node that is added
+ */
 stack_t *add_node(stack_t *top, int data)
 {
 	stack_t *new_node = malloc(sizeof(stack_t));
+
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
@@ -45,6 +63,6 @@ stack_t *add_node(stack_t *top, int data)
 		new_node->prev = top;
 	}
 	top = new_node;
-	return new_node;
+	return (new_node);
 
 }
