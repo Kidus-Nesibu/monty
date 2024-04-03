@@ -16,6 +16,7 @@ void process_file(char *filename)
         int read;
         unsigned int line_number = 0;
         char *token;
+	stack_t *top = NULL;
 
         FILE *file = fopen(filename, "r");
         if (file == NULL)
@@ -29,7 +30,7 @@ void process_file(char *filename)
                 token = strtok(line, " \n\t\r");
                 if (token != NULL)
                 {
-                        check(token, line_number);
+                        check(token, line_number, &top);
                 }
         }
         if (line)

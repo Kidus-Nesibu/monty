@@ -1,21 +1,19 @@
 #include"monty.h"
-void check(char *str, unsigned int line_number)
+void check(char *str, unsigned int line_number, stack_t **top)
 {
-	stack_t *top = NULL;
 	int i = 0;
 	
 	instruction_t arr[] = {
 		{"push", push},
-		{"pall", print},
+		{"pall", pall},
 		{NULL, NULL}
 	};
 	while (arr[i].opcode != NULL)
 	{
-		printf("%s\n", arr[i].opcode);
 		if (strcmp(arr[i].opcode, str) == 0)
 		{
-			arr[i].f(&top, line_number);
-			break;
+			arr[i].f(top, line_number);
+			return;
 		}
 		i++;
 	}
@@ -25,20 +23,23 @@ void check(char *str, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 }
-stack_t *add(stack_t *top, int data)
+bool isInteger(double num)
 {
-	stack_t *new_node = NULL;
-
-	new_node = malloc(sizeof(stack_t));
+	return (num == (int)num);
+}
+stack_t *add_node(stack_t *top, int data)
+{
+	stack_t *new_node = malloc(sizeof(stack_t));
 	new_node->n = data;
 	new_node->prev = NULL;
 	new_node->next = NULL;
-	
+
 	new_node->next = top;
 	if (top != NULL)
 	{
-		top->prev = new_node;
+		new_node->prev = top;
 	}
+	top = new_node;
 	return new_node;
+
 }
-	

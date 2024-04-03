@@ -8,6 +8,7 @@
 #include<stdlib.h>
 #include<stddef.h>
 #include<string.h>
+#include<stdbool.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 /**
@@ -40,9 +41,10 @@ typedef struct instruction_s
 } instruction_t;
 
 void process_file(char *filename);
-void check(char *str, unsigned int line_number);
+void check(char *str, unsigned int line_number, stack_t **top);
 void push(stack_t **top, unsigned int line_number);
-void print(stack_t **top, unsigned int line_number);
+void pall(stack_t **top, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-stack_t *add(stack_t *top, int data);
+bool isInteger(double num);
+stack_t *add_node(stack_t *top, int data);
 #endif
