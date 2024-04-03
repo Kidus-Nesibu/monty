@@ -10,7 +10,7 @@ void push(stack_t **top, unsigned int line_number)
 	int data;
 
 	str = strtok(NULL, " \n\t\r");
-	if (check_for_digit(str) == 1)
+	if (check_for_digit(str) == 1 && str == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
