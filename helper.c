@@ -30,15 +30,6 @@ void check(char *str, unsigned int line_number, stack_t **top)
 	}
 }
 /**
- * isInteger - check if the digit is an int or not
- * @num: the number that is used to be checked
- * Return: True if the value is int False if the value is not int
- */
-bool isInteger(double num)
-{
-	return (num == (int)num);
-}
-/**
  * add_node - add a node to the top of the stack
  * @top: the stack name
  * @data: the data to be added to the stack
@@ -65,4 +56,30 @@ stack_t *add_node(stack_t *top, int data)
 	top = new_node;
 	return (new_node);
 
+}
+/**
+ * check_for_digit - checks if the argument is an int or not
+ * @num: the argument given to be checked
+ * Return: 1 if not an integer 0 if is integer
+ */
+int check_for_digit(char *num)
+{
+	int i;
+
+	if (num == NULL)
+	{
+		return (1);
+	}
+	for (i = 0; num[i] != '\0'; i++)
+	{
+		if (i == 0 && num[i] == '-')
+		{
+			continue;
+		}
+		if (!isdigit(num[i]))
+		{
+			return (1);
+		}
+	}
+	return (0);
 }

@@ -6,19 +6,16 @@
  */
 void push(stack_t **top, unsigned int line_number)
 {
+	char *str;
 	int data;
 
-	data = atoi(strtok(NULL, " \n\t\r"));
-	if (!isInteger(data))
+	str = strtok(NULL, " \n\t\r");
+	if (check_for_digit(str) == 1)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (*top == NULL)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
+	data = atoi(str);
 	*top = add_node(*top, data);
 	if (*top == NULL)
 	{

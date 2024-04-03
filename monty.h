@@ -45,6 +45,6 @@ void check(char *str, unsigned int line_number, stack_t **top);
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-bool isInteger(double num);
 stack_t *add_node(stack_t *top, int data);
+int check_for_digit(char *num);
 #endif
