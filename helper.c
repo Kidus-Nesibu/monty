@@ -12,6 +12,7 @@ void check(char *str, unsigned int line_number, stack_t **top)
 	instruction_t arr[] = {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
 		{NULL, NULL}
 	};
 	while (arr[i].opcode != NULL)

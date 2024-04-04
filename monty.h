@@ -47,4 +47,5 @@ void pall(stack_t **top, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 stack_t *add_node(stack_t *top, int data);
 int check_for_digit(char *num);
+void pint(stack_t **top, unsigned int line_number);
 #endif
