@@ -13,6 +13,7 @@ void check(char *str, unsigned int line_number, stack_t **top)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	while (arr[i].opcode != NULL)
