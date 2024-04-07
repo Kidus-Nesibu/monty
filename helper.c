@@ -26,7 +26,7 @@ void check(char *str, unsigned int line_number, stack_t **top)
 		}
 		i++;
 	}
-	fprintf(stderr, "L:%d unknown instruction %s\n", line_number, str);
+	fprintf(stderr, "L%d: unknown instruction %s\n", line_number, str);
 	fclose(container.file);
 	free(container.line);
 	free_stack(*top);
@@ -61,8 +61,9 @@ int check_for_digit(char *num)
 void free_stack(stack_t *top)
 {
 	stack_t *tmp;
+
 	tmp = top;
-	
+
 	while (tmp)
 	{
 		tmp = top->next;

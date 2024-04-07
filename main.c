@@ -37,7 +37,7 @@ void process_file(char *filename)
 		exit(EXIT_FAILURE);
 	}
 	while ((read = getline(&line, &len, file)) != -1)
-	{	
+	{
 		line_number++;
 		token = strtok(line, " \n\t\r");
 		str = strtok(NULL, " \n\t\r");
