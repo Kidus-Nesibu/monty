@@ -19,6 +19,7 @@ void push(stack_t **top, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	data = atoi(container.integral);
+	container.val_passed = data;
 
         if (new_node == NULL)
         {

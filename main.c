@@ -5,7 +5,7 @@
  * @argv: the argument value that is given to the excutable
  * Return: 0 if the program succesfully runs
  */
-container_t container = {NULL, NULL, 0, 0, NULL};
+container_t container = {NULL, NULL, 0, 0, NULL, NULL};
 int main(int argc, char **argv)
 {
 	if (argc != 2)
