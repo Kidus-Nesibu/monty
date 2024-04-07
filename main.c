@@ -5,6 +5,7 @@
  * @argv: the argument value that is given to the excutable
  * Return: 0 if the program succesfully runs
  */
+container_t container = {NULL, NULL, 0, 0, NULL};
 int main(int argc, char **argv)
 {
 	if (argc != 2)
@@ -28,6 +29,7 @@ void process_file(char *filename)
 	char *token;
 	stack_t *top = NULL;
 	FILE *file = fopen(filename, "r");
+	char *str;
 
 	if (file == NULL)
 	{
@@ -35,9 +37,13 @@ void process_file(char *filename)
 		exit(EXIT_FAILURE);
 	}
 	while ((read = getline(&line, &len, file)) != -1)
-	{
+	{	
 		line_number++;
 		token = strtok(line, " \n\t\r");
+		str = strtok(NULL, " \n\t\r");
+		container.integral = str;
+		container.file  = file;
+		container.line = line;
 		if (token != NULL)
 		{
 			check(token, line_number, &top);
@@ -47,5 +53,6 @@ void process_file(char *filename)
 	{
 		free(line);
 	}
+	free_stack(top);
 	fclose(file);
 }

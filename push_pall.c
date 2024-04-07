@@ -6,20 +6,39 @@
  */
 void push(stack_t **top, unsigned int line_number)
 {
-	char *str;
 	int data;
+	stack_t *new_node = malloc(sizeof(stack_t));
 
-	str = strtok(NULL, " \n\t\r");
-	if (check_for_digit(str) == 1 || str == NULL)
+	if (check_for_digit(container.integral) == 1 || container.integral == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		if (*top != NULL)
+			free_stack(*top);
+		fclose(container.file);
+		free(container.line);
 		exit(EXIT_FAILURE);
 	}
-	data = atoi(str);
-	*top = add_node(*top, data);
+	data = atoi(container.integral);
+
+        if (new_node == NULL)
+        {
+                fprintf(stderr, "Error: malloc failed\n");
+                return;
+        }
+        new_node->n = data;
+        new_node->prev = NULL;
+        new_node->next = NULL;
+
+        if (*top != NULL)
+        {
+                (*top)->prev = new_node;
+		new_node->next = *top;
+        }
+        *top = new_node;
+
 	if (*top == NULL)
 	{
-		exit(EXIT_FAILURE);
+		*top = new_node;
 	}
 }
 /**

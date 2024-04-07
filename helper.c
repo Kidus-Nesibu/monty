@@ -20,44 +20,17 @@ void check(char *str, unsigned int line_number, stack_t **top)
 	{
 		if (strcmp(arr[i].opcode, str) == 0)
 		{
+			container.argument = str;
 			arr[i].f(top, line_number);
 			return;
 		}
 		i++;
 	}
-	if (strcmp(arr[i].opcode, str) != 0)
-	{
-		fprintf(stderr, "L:%d unknown instruction %s\n", line_number, str);
-		exit(EXIT_FAILURE);
-	}
-}
-/**
- * add_node - add a node to the top of the stack
- * @top: the stack name
- * @data: the data to be added to the stack
- * Return: the new node that is added
- */
-stack_t *add_node(stack_t *top, int data)
-{
-	stack_t *new_node = malloc(sizeof(stack_t));
-
-	if (new_node == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed\n");
-		return (NULL);
-	}
-	new_node->n = data;
-	new_node->prev = NULL;
-	new_node->next = NULL;
-
-	new_node->next = top;
-	if (top != NULL)
-	{
-		new_node->prev = top;
-	}
-	top = new_node;
-	return (new_node);
-
+	fprintf(stderr, "L:%d unknown instruction %s\n", line_number, str);
+	fclose(container.file);
+	free(container.line);
+	free_stack(*top);
+	exit(EXIT_FAILURE);
 }
 /**
  * check_for_digit - checks if the argument is an int or not
@@ -84,4 +57,16 @@ int check_for_digit(char *num)
 		}
 	}
 	return (0);
+}
+void free_stack(stack_t *top)
+{
+	stack_t *tmp;
+	tmp = top;
+	
+	while (tmp)
+	{
+		tmp = top->next;
+		free(top);
+		top = tmp;
+	}
 }

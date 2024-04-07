@@ -39,14 +39,23 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+typedef struct container_h
+{
+	char *argument;
+	char *integral;
+	int val_passed;
+	unsigned int count;
+	FILE *file;
+	char *line;
+}container_t;
+extern container_t container;
 void process_file(char *filename);
 void check(char *str, unsigned int line_number, stack_t **top);
 void push(stack_t **top, unsigned int line_number);
 void pall(stack_t **top, unsigned int line_number);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-stack_t *add_node(stack_t *top, int data);
 int check_for_digit(char *num);
 void pint(stack_t **top, unsigned int line_number);
 void pop(stack_t **top, unsigned int line_number);
+void free_stack(stack_t *top);
 #endif
