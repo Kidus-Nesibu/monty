@@ -1,16 +1,22 @@
-#include"monty.h"
-/**
- * pint - print the top of the stack without deleting
- * @top: the name of the stack
- * @line_number: the number of the line
- */
-void pint(stack_t **top, unsigned int line_number)
-{
-	if (*top == NULL)
-	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	printf("%d\n", (*top)->n);
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "monty.h"
 
+/**
+ * pint - print the value at the top of the stack
+ * @stack: stack given by main in start.c
+ * @line_cnt: amount of lines
+ *
+ * Return: void
+ */
+void pint(stack_t **stack, unsigned int line_cnt)
+{
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_cnt);
+		exit(EXIT_FAILURE);
+
+	}
+	printf("%d\n", (*stack)->n);
 }
